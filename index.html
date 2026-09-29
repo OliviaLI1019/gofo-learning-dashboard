@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>新员工学习计划进度看板</title>
+<title>试用期新员工学习计划进度看板</title>
 <style>
 :root{--bg:#f4f6fa;--card:#fff;--line:#e7ebf2;--ink:#1f2937;--muted:#6b7280;
 --blue:#3b6ef5;--green:#16a34a;--amber:#f59e0b;--orange:#f97316;--red:#ef4444;--redbg:#fef2f2;}
@@ -11,48 +11,38 @@
 body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
 background:var(--bg);color:var(--ink);padding:26px 22px 60px;}
 .wrap{max-width:1200px;margin:0 auto;}
-header{margin-bottom:20px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px;}
+header{margin-bottom:20px;}
 h1{font-size:23px;font-weight:700;}
 .sub{color:var(--muted);font-size:13px;margin-top:6px;}
-.ctrls{display:flex;gap:14px;flex-wrap:wrap;}
-.cg{display:flex;align-items:center;gap:6px;}
-.cg .lb{font-size:12px;color:var(--muted);}
-.btn{border:1px solid var(--line);background:#fff;color:var(--muted);font-size:12px;
-padding:5px 12px;border-radius:20px;cursor:pointer;font-family:inherit;transition:.15s;}
-.btn:hover{border-color:#c7d0e0;}
-.btn.on{background:var(--blue);border-color:var(--blue);color:#fff;font-weight:600;}
-.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:20px;}
+.ddlnote{margin-top:8px;font-size:12px;color:var(--blue);background:#eef3ff;border:1px solid #d5e0ff;
+display:inline-block;padding:4px 11px;border-radius:18px;font-weight:600;}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px;}
 .kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 16px;}
 .kpi .label{color:var(--muted);font-size:12px;}
 .kpi .num{font-size:27px;font-weight:800;margin-top:5px;line-height:1;}
 .kpi .note{font-size:11px;color:var(--muted);margin-top:5px;}
 .kpi.blue .num{color:var(--blue);} .kpi.green .num{color:var(--green);}
-.kpi.amber .num{color:var(--amber);} .kpi.red .num{color:var(--red);} .kpi.orange .num{color:var(--orange);}
+.kpi.amber .num{color:var(--amber);} .kpi.red .num{color:var(--red);}
 .stitle{font-size:15px;font-weight:700;margin:24px 0 12px;display:flex;align-items:center;gap:8px;}
 .stitle .dot{width:8px;height:8px;border-radius:50%;background:var(--blue);}
 .alert-panel{background:var(--redbg);border:1px solid #fecaca;border-radius:16px;padding:16px 18px;}
-.alert-head{font-size:13px;font-weight:700;color:#b91c1c;margin-bottom:12px;}
-.lv-title{font-size:13px;font-weight:700;margin:14px 0 8px;color:#7f1d1d;display:flex;align-items:center;gap:6px;}
-.lv-title:first-child{margin-top:0;}
-.lv-title .cnt{background:#b91c1c;color:#fff;border-radius:12px;padding:1px 9px;font-size:11px;}
-.urg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
-.uc{background:#fff;border:1.5px solid #fca5a5;border-radius:13px;padding:13px 15px;
-display:flex;justify-content:space-between;gap:12px;box-shadow:0 5px 16px rgba(239,68,68,.10);}
-.uc.lv3{animation:pulse 1.8s ease-in-out infinite;}
-@keyframes pulse{0%,100%{box-shadow:0 5px 16px rgba(239,68,68,.10);}50%{box-shadow:0 5px 24px rgba(239,68,68,.30);}}
-.uc.lv2{border-color:#fdba74;box-shadow:0 4px 14px rgba(249,115,22,.08);}
-.uc.lv1{border-color:#fcd34d;}
-.un{font-size:15px;font-weight:800;}
-.ub{font-size:11px;color:#fff;background:var(--red);border-radius:18px;padding:2px 9px;font-weight:700;vertical-align:2px;}
-.uc.lv2 .ub{background:var(--orange);} .uc.lv1 .ub{background:var(--amber);}
-.ui{color:var(--muted);font-size:12px;margin-top:5px;}
-.ud{font-size:11px;margin-top:4px;font-weight:600;color:#b91c1c;}
-.uc.lv2 .ud{color:#c2410c;} .uc.lv1 .ud{color:#a16207;}
-.ur{min-width:112px;text-align:right;}
-.up{font-size:23px;font-weight:800;color:var(--red);}
-.uc.lv2 .up{color:var(--orange);} .uc.lv1 .up{color:var(--amber);}
-.uh{font-size:11px;color:var(--muted);margin-top:5px;}
-.empty{color:var(--muted);font-size:12px;padding:6px 2px;}
+.ahead{font-size:13px;font-weight:700;color:#b91c1c;margin-bottom:12px;}
+.urg-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.uc{background:#fff;border:1.5px solid #fca5a5;border-radius:13px;padding:13px 14px;
+box-shadow:0 4px 14px rgba(239,68,68,.08);}
+.uc.t1{border-color:#fca5a5;} .uc.t2{border-color:#fdba74;}
+.uc.t3{border-color:#fcd34d;} .uc.t4{border-color:#dbe3ef;}
+.un{font-size:14.5px;font-weight:800;}
+.ub{font-size:11px;color:#fff;border-radius:18px;padding:2px 9px;font-weight:700;vertical-align:2px;}
+.b1{background:var(--red);} .b2{background:var(--orange);} .b3{background:var(--amber);} .b4{background:#94a3b8;}
+.ui{color:var(--muted);font-size:11.5px;margin-top:5px;line-height:1.5;}
+.ud{font-size:11px;margin-top:4px;color:#b91c1c;font-weight:600;}
+.uc.t2 .ud{color:#c2410c;} .uc.t3 .ud{color:#a16207;} .uc.t4 .ud{color:#64748b;}
+.up{font-size:21px;font-weight:800;margin-top:8px;}
+.bar{height:6px;background:#eef1f6;border-radius:5px;overflow:hidden;margin-top:5px;}
+.bf{height:100%;border-radius:5px;}
+.uh{font-size:11px;color:var(--muted);margin-top:4px;}
+.empty{color:var(--muted);font-size:12px;padding:8px 2px;}
 .dept-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
 .dc{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:16px 18px;}
 .dc.hot{border-color:#fca5a5;}
@@ -64,9 +54,9 @@ display:flex;justify-content:space-between;gap:12px;box-shadow:0 5px 16px rgba(2
 .db{height:7px;background:#eef1f6;border-radius:6px;margin-bottom:12px;overflow:hidden;}
 .dbf{height:100%;border-radius:6px;}
 .mr{padding:9px 0;border-top:1px dashed var(--line);}
-.mr.u3{background:#fff7f7;border-radius:8px;padding:9px 8px;border-left:3px solid var(--red);}
-.mr.u2{border-left:3px solid var(--orange);padding-left:8px;}
-.mr.u1{border-left:3px solid var(--amber);padding-left:8px;}
+.mr.t1{background:#fff7f7;border-radius:8px;padding:9px 8px;border-left:3px solid var(--red);}
+.mr.t2{border-left:3px solid var(--orange);padding-left:8px;}
+.mr.t3{border-left:3px solid var(--amber);padding-left:8px;}
 .mt1{display:flex;align-items:baseline;gap:8px;}
 .mn{font-weight:600;font-size:13.5px;}
 .mpos{color:var(--muted);font-size:11.5px;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
@@ -74,145 +64,119 @@ display:flex;justify-content:space-between;gap:12px;box-shadow:0 5px 16px rgba(2
 .mt2{display:flex;gap:10px;align-items:center;margin:3px 0 5px;flex-wrap:wrap;}
 .ms{color:#9aa3b2;font-size:10.5px;}
 .badge{font-size:10.5px;border-radius:4px;padding:1px 7px;font-weight:700;}
-.b3{color:#fff;background:var(--red);} .b2{color:#fff;background:var(--orange);} .b1{color:#fff;background:var(--amber);}
+.g1{color:#fff;background:var(--red);} .g2{color:#fff;background:var(--orange);}
+.g3{color:#fff;background:var(--amber);} .g4{color:#fff;background:#94a3b8;}
 .blate{color:#9a3412;background:#ffedd5;}
-.bar{height:6px;background:#eef1f6;border-radius:5px;overflow:hidden;}
-.bf{height:100%;border-radius:5px;}
 .done-line{margin-top:9px;padding:7px 10px;background:#f6f9f6;border-radius:8px;
 color:#8a94a6;font-size:11.5px;line-height:1.7;}
 footer{margin-top:28px;color:#9aa3b2;font-size:11.5px;text-align:center;line-height:1.8;}
-@media(max-width:1000px){.kpis{grid-template-columns:repeat(2,1fr);}.urg-grid{grid-template-columns:1fr;}.dept-grid{grid-template-columns:1fr;}}
+@media(max-width:1000px){.kpis{grid-template-columns:repeat(2,1fr);}.urg-grid{grid-template-columns:repeat(2,1fr);}.dept-grid{grid-template-columns:1fr;}}
+@media(max-width:640px){.urg-grid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <div>
-      <h1>新员工学习计划进度看板</h1>
-      <div class="sub">统计截至 2026/09/29 · 数据源：计划学员导出表 · 共 102 名学员（试用期 55 人）</div>
-    </div>
-    <div class="ctrls">
-      <div class="cg"><span class="lb">范围</span>
-        <button class="btn on" data-scope="prob" onclick="setScope('prob')">试用期</button>
-        <button class="btn" data-scope="all" onclick="setScope('all')">全部学员</button></div>
-      <div class="cg"><span class="lb">分组</span>
-        <button class="btn on" data-group="dept" onclick="setGroup('dept')">按部门</button>
-        <button class="btn" data-group="jf" onclick="setGroup('jf')">按职族</button></div>
+    <h1>试用期新员工学习计划进度看板</h1>
+    <div class="sub">统计截至 2026/09/29 · 共 102 名学员（试用期 55 人）· 数据源：计划学员导出表</div>
+    <div class="ddlnote">⏰ 提醒口径：以「转正日期」为 DDL，按部门维度看谁快转正了还没学完</div>
+    <div style="margin-top:12px;display:flex;gap:6px;align-items:center">
+      <span style="font-size:12px;color:#6b7280">范围</span>
+      <button class="btn on" data-scope="prob" onclick="setScope('prob')" style="border:1px solid #e7ebf2;background:#fff;color:#6b7280;font-size:12px;padding:5px 12px;border-radius:20px;cursor:pointer;font-family:inherit">试用期</button>
+      <button class="btn" data-scope="all" onclick="setScope('all')" style="border:1px solid #e7ebf2;background:#fff;color:#6b7280;font-size:12px;padding:5px 12px;border-radius:20px;cursor:pointer;font-family:inherit">全部学员</button>
     </div>
   </header>
 
   <div class="kpis" id="kpis"></div>
 
-  <div class="stitle"><span class="dot" style="background:var(--red)"></span>⚠ 学习进度预警</div>
+  <div class="stitle"><span class="dot" style="background:var(--red)"></span>⏰ 快转正了 · 但学习还没做完</div>
   <div class="alert-panel" id="alert"></div>
 
-  <div class="stitle"><span class="dot"></span><span id="gtitle">按部门看板</span></div>
+  <div class="stitle"><span class="dot"></span>按部门看板</div>
   <div class="dept-grid" id="depts"></div>
 
   <footer>
-    预警口径：①已逾期＝超过「要求完成时间」且未完成；②即将到期＝14 天内到期且未完成；③临近转正＝30 天内转正且未完成<br>
-    100% 完成学员已折叠为一行 · 数据源：计划学员_20260929135259.xlsx
+    倒计时分色：≤30天 红 · ≤60天 橙 · ≤90天 黄 · &gt;90天 灰<br>
+    DDL：试用期员工＝预计转正日期；已转正员工＝要求完成时间 · 数据源：计划学员_20260929135259.xlsx
   </footer>
 </div>
 <script>
-const DATA = [{"n": "马培培", "d": "西班牙客户服务组", "j": "营销族", "p": "CS Supervisor 客服主管", "st": "试用", "pe": "2027/01/26", "rd": "2026/10/25", "dr": 26, "dp": 119, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "罗艳", "d": "管培生项目组", "j": "职能族", "p": "Management Trainee 管培生", "st": "试用", "pe": "2026/12/31", "rd": "2026/09/29", "dr": 0, "dp": 93, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "刘强强", "d": "设备运营组", "j": "职能族", "p": "Senior SP Supervisor高级场地规划主管", "st": "试用", "pe": "2026/12/21", "rd": "2026/09/20", "dr": -9, "dp": 83, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "张俊杰", "d": "商务开发组", "j": "营销族", "p": "BD Supervisor 商务开发主管", "st": "试用", "pe": "2026/11/12", "rd": "2026/08/11", "dr": -49, "dp": 44, "pr": 1.0, "ps": "延期完成", "lv": 0, "done": true, "late": true}, {"n": "陈思颖", "d": "HRBP支持组", "j": "职能族", "p": "Junior HRBP Specialist 初级HRBP专员", "st": "试用", "pe": "2026/12/24", "rd": "2026/09/28", "dr": -1, "dp": 86, "pr": 0.0, "ps": "未开始", "lv": 3, "done": false, "late": false}, {"n": "胡颖韬", "d": "支持组", "j": "职能族", "p": "Employee Support Specialist 员工支持专员", "st": "试用", "pe": "2027/01/27", "rd": "2026/10/26", "dr": 27, "dp": 120, "pr": 0.6875, "ps": "按时学习中", "lv": 0, "done": false, "late": false}, {"n": "潘云涛", "d": "产品质量组", "j": "职能族", "p": "QM Surpervisor 质量主管", "st": "试用", "pe": "2027/01/05", "rd": "2026/10/04", "dr": 5, "dp": 98, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "田沛艳", "d": "支持组", "j": "职能族", "p": "Employee Support Specialist 员工支持专员", "st": "正式", "pe": "2026/04/18", "rd": "2026/06/09", "dr": -112, "dp": -164, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "黄连珠", "d": "数据分析组", "j": "IT族", "p": "Data Analysis Engineer数据分析师", "st": "试用", "pe": "2027/02/02", "rd": "2026/11/01", "dr": 33, "dp": 126, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "钟育文", "d": "库内操作研发组", "j": "IT族", "p": "Java Engineer Java工程师", "st": "试用", "pe": "2026/09/30", "rd": "2026/06/30", "dr": -91, "dp": 1, "pr": 1.0, "ps": "延期完成", "lv": 0, "done": true, "late": true}, {"n": "余峰杰", "d": "报账组", "j": "职能族", "p": "Expense Support Specialist 报账支持专员", "st": "试用", "pe": "2026/12/31", "rd": "2026/09/29", "dr": 0, "dp": 93, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "徐大卫", "d": "管培生项目组", "j": "职能族", "p": "Management Trainee 管培生", "st": "试用", "pe": "2026/12/31", "rd": "2026/09/29", "dr": 0, "dp": 93, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "姚欢", "d": "运输管理组", "j": "职能族", "p": "Transportation Manager运输管理经理", "st": "试用", "pe": "2027/03/13", "rd": "2026/12/13", "dr": 75, "dp": 165, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "叶琳", "d": "管培生项目组", "j": "职能族", "p": "Management Trainee 管培生", "st": "试用", "pe": "2026/12/31", "rd": "2026/10/11", "dr": 12, "dp": 93, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "尹辉辉", "d": "派送作业研发组", "j": "IT族", "p": "Mobile Engineer 移动端工程师", "st": "试用", "pe": "2026/11/24", "rd": "2026/08/23", "dr": -37, "dp": 56, "pr": 1.0, "ps": "延期完成", "lv": 0, "done": true, "late": true}, {"n": "余莉媛", "d": "大客户组", "j": "营销族", "p": "Senior KA Specialist 高级大客户专员", "st": "试用", "pe": "2027/01/06", "rd": "2026/10/05", "dr": 6, "dp": 99, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "易淑仲", "d": "业务流程管理组", "j": "IT族", "p": "Process Management Manager 流程管理经理", "st": "试用", "pe": "2027/02/02", "rd": "2026/11/01", "dr": 33, "dp": 126, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "代旭", "d": "报账组", "j": "职能族", "p": "Expense Support Specialist 报账支持专员", "st": "试用", "pe": "2027/01/02", "rd": "2026/10/01", "dr": 2, "dp": 95, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "谭佩伟", "d": "HRBP支持组", "j": "职能族", "p": "HRBP Supervisor HRBP主管", "st": "正式", "pe": null, "rd": "2026/07/30", "dr": -61, "dp": null, "pr": 0.475, "ps": "延期学习中", "lv": 3, "done": false, "late": false}, {"n": "邓会敏", "d": "业务解决方案组", "j": "IT族", "p": "Solution Architect 解决方案架构师", "st": "试用", "pe": "2026/11/30", "rd": "2026/08/30", "dr": -30, "dp": 62, "pr": 0.75, "ps": "延期学习中", "lv": 3, "done": false, "late": false}, {"n": "黄良丽", "d": "大客户组", "j": "营销族", "p": "Senior KA Specialist 高级大客户专员", "st": "正式", "pe": "2026/07/12", "rd": "2026/07/12", "dr": -79, "dp": -79, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "严雯瑾", "d": "HSSC共享实习生组", "j": "职能族", "p": "Intern 实习生", "st": "正式", "pe": null, "rd": "2026/10/28", "dr": 29, "dp": null, "pr": 0.6875, "ps": "按时学习中", "lv": 0, "done": false, "late": false}, {"n": "李雅琪", "d": "管培生项目组", "j": "职能族", "p": "Management Trainee 管培生", "st": "试用", "pe": "2026/12/31", "rd": "2026/09/29", "dr": 0, "dp": 93, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "范美丹", "d": "应付及结算管理组", "j": "职能族", "p": "财务BP主管", "st": "正式", "pe": null, "rd": "2026/09/14", "dr": -15, "dp": null, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "林红", "d": "质量管理部", "j": "职能族", "p": "QM Specialist质量专员", "st": "试用", "pe": "2026/12/31", "rd": "2026/09/20", "dr": -9, "dp": 93, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "覃梦仙", "d": "大客户组", "j": "营销族", "p": "Senior KA Specialist 高级大客户专员", "st": "试用", "pe": "2027/02/02", "rd": "2026/11/01", "dr": 33, "dp": 126, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "肖风兰", "d": "商务开发组", "j": "营销族", "p": "BD Specialist 商务开发专员", "st": "正式", "pe": "2026/07/13", "rd": "2026/06/09", "dr": -112, "dp": -78, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "郭芷晴", "d": "支持组", "j": "职能族", "p": "Employee Support Specialist 员工支持专员", "st": "正式", "pe": "2026/08/05", "rd": "2026/08/04", "dr": -56, "dp": -55, "pr": 1.0, "ps": "延期完成", "lv": 0, "done": true, "late": true}, {"n": "林展名", "d": "产品质量组", "j": "职能族", "p": "Management Trainee 管培生", "st": "试用", "pe": "2026/09/29", "rd": "2026/06/28", "dr": -93, "dp": 0, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "许天钰", "d": "GUS核算组", "j": "职能族", "p": "高级财务主管", "st": "正式", "pe": null, "rd": "2026/09/14", "dr": -15, "dp": null, "pr": 0.125, "ps": "延期学习中", "lv": 3, "done": false, "late": false}, {"n": "蒙虹球", "d": "操作支持组", "j": "职能族", "p": "Data Analyst Specialist数据分析专员", "st": "正式", "pe": "2026/06/15", "rd": "2026/06/14", "dr": -107, "dp": -106, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "何怡静", "d": "管培生项目组", "j": "职能族", "p": "Management Trainee 管培生", "st": "试用", "pe": "2026/12/31", "rd": "2026/09/29", "dr": 0, "dp": 93, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "曾灵毅", "d": "终端质量组", "j": "职能族", "p": "Senior Terminal Supervisor高级终端主管", "st": "试用", "pe": "2027/03/14", "rd": "2026/12/14", "dr": 76, "dp": 166, "pr": 0.275, "ps": "按时学习中", "lv": 0, "done": false, "late": false}, {"n": "李荣杰", "d": "操作管理组", "j": "职能族", "p": "LP Specialist精益生产专员", "st": "正式", "pe": "2026/06/30", "rd": "2026/06/30", "dr": -91, "dp": -91, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "黄心仪", "d": "客户服务体验组", "j": "营销族", "p": "Junior CS Specialist 初级客服专员", "st": "正式", "pe": "2026/07/20", "rd": "2026/07/20", "dr": -71, "dp": -71, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "付金凤", "d": "客户服务体验组", "j": "营销族", "p": "Process System Optimization Supervisor流程系统优化主管", "st": "正式", "pe": "2026/06/24", "rd": "2026/06/23", "dr": -98, "dp": -97, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "钟国枫", "d": "质量管理部", "j": "职能族", "p": "QM Specialist质量专员", "st": "正式", "pe": "2026/06/29", "rd": "2026/06/28", "dr": -93, "dp": -92, "pr": 1.0, "ps": "延期完成", "lv": 0, "done": true, "late": true}, {"n": "王志崇", "d": "SD 战略运营部", "j": "职能族", "p": "Senior Business Analysis Supervisor高级经营分析主管", "st": "试用", "pe": "2027/01/13", "rd": "2026/10/12", "dr": 13, "dp": 106, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "周明旭", "d": "精益改善组", "j": "职能族", "p": "LP Manager精益生产经理", "st": "试用", "pe": "2026/10/28", "rd": "2026/07/28", "dr": -63, "dp": 29, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "任浩", "d": "产品质量组", "j": "职能族", "p": "QM Specialist 质量专员", "st": "正式", "pe": "2026/08/23", "rd": "2026/06/09", "dr": -112, "dp": -37, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "余素娴", "d": "薪酬组", "j": "职能族", "p": "Compensation Supervisor 薪酬主管", "st": "正式", "pe": "2026/06/19", "rd": "2026/06/18", "dr": -103, "dp": -102, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "张钰琳", "d": "管培生项目组", "j": "职能族", "p": "Management Trainee 管培生", "st": "试用", "pe": "2026/12/31", "rd": "2026/09/29", "dr": 0, "dp": 93, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "黄忠苏", "d": "TP 中转规划部", "j": "职能族", "p": "TP Manager中转规划经理", "st": "试用", "pe": "2027/01/19", "rd": "2026/10/18", "dr": 19, "dp": 112, "pr": 0.6875, "ps": "按时学习中", "lv": 0, "done": false, "late": false}, {"n": "李琛", "d": "质量运营组", "j": "职能族", "p": "Senior QM Specialist 高级质量专员", "st": "试用", "pe": "2027/03/22", "rd": "2026/12/22", "dr": 84, "dp": 174, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "卢君绮", "d": "商务支持组", "j": "营销族", "p": "Senior Business Support Specialist 高级商务支持专员", "st": "正式", "pe": "2026/08/14", "rd": "2026/08/13", "dr": -47, "dp": -46, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "赵振", "d": "站点管理研发组", "j": "IT族", "p": "Product Manager 产品经理", "st": "正式", "pe": "2026/07/27", "rd": "2026/06/09", "dr": -112, "dp": -64, "pr": 0.5625, "ps": "延期学习中", "lv": 3, "done": false, "late": false}, {"n": "李壮", "d": "终端质量组", "j": "职能族", "p": "Senior Terminal Specialist高级终端专员", "st": "正式", "pe": "2026/08/17", "rd": "2026/08/16", "dr": -44, "dp": -43, "pr": 0.75, "ps": "延期学习中", "lv": 3, "done": false, "late": false}, {"n": "李子妍", "d": "终端运营组", "j": "职能族", "p": "Management Trainee 管培生", "st": "正式", "pe": "2026/09/22", "rd": "2026/06/21", "dr": -100, "dp": -7, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "吴志翔", "d": "产品质量组", "j": "职能族", "p": "QM Specialist质量专员", "st": "正式", "pe": "2026/08/17", "rd": "2026/08/16", "dr": -44, "dp": -43, "pr": 0.5625, "ps": "延期学习中", "lv": 3, "done": false, "late": false}, {"n": "袁望旺", "d": "支持组", "j": "职能族", "p": "Employee Support Supervisor 员工支持主管", "st": "试用", "pe": "2026/11/18", "rd": "2026/08/17", "dr": -43, "dp": 50, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "邓智", "d": "系统架构组", "j": "IT族", "p": "System Architect 系统架构师", "st": "正式", "pe": "2026/09/29", "rd": "2026/06/28", "dr": -93, "dp": 0, "pr": 0.6875, "ps": "延期学习中", "lv": 3, "done": false, "late": false}, {"n": "李雨秋", "d": "管培生项目组", "j": "职能族", "p": "Management Trainee 管培生", "st": "试用", "pe": "2026/12/31", "rd": "2026/09/29", "dr": 0, "dp": 93, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "余美霖", "d": "产品部", "j": "职能族", "p": "Product Specialist 产品专员", "st": "正式", "pe": "2026/08/18", "rd": "2026/08/17", "dr": -43, "dp": -42, "pr": 0.5625, "ps": "延期学习中", "lv": 3, "done": false, "late": false}, {"n": "韩俊伟", "d": "精益改善组", "j": "职能族", "p": "Senior LP Specialist高级精益生产专员", "st": "试用", "pe": "2027/03/19", "rd": "2026/12/19", "dr": 81, "dp": 171, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "吴昂扬", "d": "终端质量组", "j": "职能族", "p": "Management Trainee 管培生", "st": "正式", "pe": "2026/09/17", "rd": "2026/06/16", "dr": -105, "dp": -12, "pr": 1.0, "ps": "延期完成", "lv": 0, "done": true, "late": true}, {"n": "刘美也", "d": "操作支持组", "j": "职能族", "p": "Senior Data Analyst Specialist 高级数据分析专员", "st": "正式", "pe": "2026/07/08", "rd": "2026/07/08", "dr": -83, "dp": -83, "pr": 0.5625, "ps": "延期学习中", "lv": 3, "done": false, "late": false}, {"n": "胡玉霆", "d": "招聘支持组", "j": "职能族", "p": "Junior Recruitment Specialist 初级招聘专员", "st": "正式", "pe": "2026/09/26", "rd": "2026/06/25", "dr": -96, "dp": -3, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "郑丽娜", "d": "设备运营组", "j": "职能族", "p": "SP Manager场地规划经理", "st": "试用", "pe": "2027/01/05", "rd": "2026/10/04", "dr": 5, "dp": 98, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "马永梅", "d": "报账组", "j": "职能族", "p": "Expense Support Specialist 报账支持专员", "st": "试用", "pe": "2026/12/28", "rd": "2026/09/27", "dr": -2, "dp": 90, "pr": 1.0, "ps": "延期完成", "lv": 0, "done": true, "late": true}, {"n": "刘家良", "d": "质量管理部", "j": "职能族", "p": "QM Specialist质量专员", "st": "试用", "pe": "2026/12/21", "rd": "2026/09/20", "dr": -9, "dp": 83, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "黎林", "d": "质量调度组", "j": "职能族", "p": "QM Specialist质量专员", "st": "试用", "pe": "2027/02/09", "rd": "2026/11/08", "dr": 40, "dp": 133, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "杨家益", "d": "商务支持组", "j": "营销族", "p": "Senior Business Support Specialist 高级商务支持专员", "st": "试用", "pe": "2027/02/16", "rd": "2026/11/15", "dr": 47, "dp": 140, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "刘婷", "d": "商务支持组", "j": "营销族", "p": "Senior Business Support Specialist 高级商务支持专员", "st": "正式", "pe": "2026/04/04", "rd": "2026/06/09", "dr": -112, "dp": -178, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "韦晶", "d": "系统组", "j": "职能族", "p": "Junior System Administration Specialist 初级系统管理专员", "st": "正式", "pe": "2026/08/19", "rd": "2026/08/18", "dr": -42, "dp": -41, "pr": 0.5625, "ps": "延期学习中", "lv": 3, "done": false, "late": false}, {"n": "崔芳雨", "d": "管培生项目组", "j": "职能族", "p": "Management Trainee 管培生", "st": "试用", "pe": "2026/12/31", "rd": "2026/09/29", "dr": 0, "dp": 93, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "田也", "d": "质量管理部", "j": "职能族", "p": "QM Specialist质量专员", "st": "试用", "pe": "2026/12/11", "rd": "2026/09/10", "dr": -19, "dp": 73, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "刘名卓", "d": "数据分析组", "j": "IT族", "p": "Big Data Development Engineer大数据开发工程师", "st": "正式", "pe": "2026/07/07", "rd": "2026/06/09", "dr": -112, "dp": -84, "pr": 1.0, "ps": "延期完成", "lv": 0, "done": true, "late": true}, {"n": "张辉娟", "d": "HSSC支持组", "j": "职能族", "p": "Senior HSSC Supports Manager HSSC支持组高级经理", "st": "正式", "pe": null, "rd": "2026/08/04", "dr": -56, "dp": null, "pr": 0.275, "ps": "延期学习中", "lv": 3, "done": false, "late": false}, {"n": "陈欢", "d": "客户服务体验组", "j": "营销族", "p": "Junior CS Specialist 初级客服专员", "st": "试用", "pe": "2027/03/08", "rd": "2026/12/08", "dr": 70, "dp": 160, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "刘华灵", "d": "质量改善组", "j": "职能族", "p": "QM Supervisor 质量主管", "st": "正式", "pe": "2026/05/24", "rd": "2026/06/09", "dr": -112, "dp": -128, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "江培炎", "d": "数据分析组", "j": "IT族", "p": "Big Data Development Engineer大数据开发工程师", "st": "试用", "pe": "2026/12/16", "rd": "2026/09/15", "dr": -14, "dp": 78, "pr": 0.6875, "ps": "延期学习中", "lv": 3, "done": false, "late": false}, {"n": "鲍芳君", "d": "客户服务体验组", "j": "营销族", "p": "Junior CS Specialist 初级客服专员", "st": "试用", "pe": "2027/03/08", "rd": "2026/12/08", "dr": 70, "dp": 160, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "王妍玉", "d": "管培生项目组", "j": "职能族", "p": "Management Trainee 管培生", "st": "试用", "pe": "2026/12/31", "rd": "2026/09/29", "dr": 0, "dp": 93, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "张群", "d": "技术支持部", "j": "IT族", "p": "IT support 技术支持工程师", "st": "正式", "pe": "2026/08/17", "rd": "2026/08/16", "dr": -44, "dp": -43, "pr": 0.6875, "ps": "延期学习中", "lv": 3, "done": false, "late": false}, {"n": "秦文凯", "d": "客户订单研发组", "j": "IT族", "p": "Web Engineer WEB工程师", "st": "正式", "pe": "2026/09/23", "rd": "2026/06/22", "dr": -99, "dp": -6, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "陈若欣", "d": "终端质量组", "j": "职能族", "p": "Terminal Specialist终端专员", "st": "正式", "pe": "2026/08/04", "rd": "2026/06/09", "dr": -112, "dp": -56, "pr": 0.6875, "ps": "延期学习中", "lv": 3, "done": false, "late": false}, {"n": "徐筱笛", "d": "管培生项目组", "j": "职能族", "p": "Management Trainee 管培生", "st": "试用", "pe": "2026/12/31", "rd": "2026/09/29", "dr": 0, "dp": 93, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "曾武", "d": "终端运营组", "j": "职能族", "p": "Terminal Manager终端经理", "st": "试用", "pe": "2027/01/14", "rd": "2026/10/13", "dr": 14, "dp": 107, "pr": 0.75, "ps": "按时学习中", "lv": 2, "done": false, "late": false}, {"n": "杨馨宇", "d": "招聘支持组", "j": "职能族", "p": "Recruitment Supervisor 招聘主管", "st": "正式", "pe": null, "rd": "2026/07/30", "dr": -61, "dp": null, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "刘宇", "d": "操作管理组", "j": "职能族", "p": "Data Analyst Specialist 数据分析专员", "st": "正式", "pe": "2026/04/11", "rd": "2026/06/09", "dr": -112, "dp": -171, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "江莉", "d": "商务开发组", "j": "营销族", "p": "Senior BD Specialist 高级商务开发专员", "st": "试用", "pe": "2027/01/26", "rd": "2026/10/25", "dr": 26, "dp": 119, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "胡晓南", "d": "产品质量组", "j": "职能族", "p": "QM Specialist质量专员", "st": "正式", "pe": "2026/08/05", "rd": "2026/08/04", "dr": -56, "dp": -55, "pr": 1.0, "ps": "延期完成", "lv": 0, "done": true, "late": true}, {"n": "刘学九", "d": "ES 西班牙区", "j": "职能族", "p": "ES GM 西班牙区总经理", "st": "试用", "pe": "2027/01/14", "rd": "2026/10/13", "dr": 14, "dp": 107, "pr": 0.20833, "ps": "按时学习中", "lv": 2, "done": false, "late": false}, {"n": "李清云", "d": "客户服务体验组", "j": "营销族", "p": "Senior CS Specialist 高级客服专员", "st": "正式", "pe": "2026/04/13", "rd": "2026/06/09", "dr": -112, "dp": -169, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "文诗逸", "d": "客服工单研发组", "j": "IT族", "p": "Test Engineer 测试工程师", "st": "试用", "pe": "2026/11/07", "rd": "2026/08/06", "dr": -54, "dp": 39, "pr": 1.0, "ps": "延期完成", "lv": 0, "done": true, "late": true}, {"n": "李灿鑫", "d": "站点管理研发组", "j": "IT族", "p": "Java Engineer Java工程师", "st": "正式", "pe": "2026/07/28", "rd": "2026/06/09", "dr": -112, "dp": -63, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "饶晨璐", "d": "运输管理组", "j": "职能族", "p": "Transportation Specialist运输管理专员", "st": "正式", "pe": "2026/08/05", "rd": "2026/08/04", "dr": -56, "dp": -55, "pr": 1.0, "ps": "延期完成", "lv": 0, "done": true, "late": true}, {"n": "林晓华", "d": "报账组", "j": "职能族", "p": "Junior Expense Support Specialist 初级报账支持专员", "st": "试用", "pe": "2027/01/14", "rd": "2026/10/13", "dr": 14, "dp": 107, "pr": 0.275, "ps": "按时学习中", "lv": 2, "done": false, "late": false}, {"n": "郑泽贵", "d": "大客户组", "j": "营销族", "p": "Senior KA Specialist 高级大客户专员", "st": "试用", "pe": "2027/01/12", "rd": "2026/10/11", "dr": 12, "dp": 105, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "卢启航", "d": "产品质量组", "j": "职能族", "p": "Senior Product Quality Specialist高级产品质量专员", "st": "试用", "pe": "2027/01/14", "rd": "2026/10/13", "dr": 14, "dp": 107, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "周伶", "d": "质量调度组", "j": "职能族", "p": "QM Specialist质量专员", "st": "试用", "pe": "2027/02/09", "rd": "2026/11/08", "dr": 40, "dp": 133, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "周冰玉", "d": "数据分析组", "j": "职能族", "p": "Management Trainee 管培生", "st": "试用", "pe": "2026/09/29", "rd": "2026/06/28", "dr": -93, "dp": 0, "pr": 1.0, "ps": "延期完成", "lv": 0, "done": true, "late": true}, {"n": "黄亮", "d": "运输管理组", "j": "职能族", "p": "Senior Transportation Supervisor高级运输管理主管", "st": "正式", "pe": "2026/08/10", "rd": "2026/08/09", "dr": -51, "dp": -50, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "何锦峰", "d": "管培生项目组", "j": "职能族", "p": "Management Trainee 管培生", "st": "试用", "pe": "2026/12/31", "rd": "2026/09/29", "dr": 0, "dp": 93, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "王紫薇", "d": "支持组", "j": "职能族", "p": "Junior Data Analyst Specialist 初级数据分析专员", "st": "正式", "pe": "2026/08/12", "rd": "2026/08/11", "dr": -49, "dp": -48, "pr": 1.0, "ps": "延期完成", "lv": 0, "done": true, "late": true}, {"n": "高胜", "d": "揽收运输研发组", "j": "IT族", "p": "Java Engineer Java工程师", "st": "正式", "pe": null, "rd": "2026/08/30", "dr": -30, "dp": null, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "扶楚旸", "d": "数据分析组", "j": "IT族", "p": "Senior Data Analyst Engineer高级数据分析师", "st": "试用", "pe": "2027/01/12", "rd": "2026/10/11", "dr": 12, "dp": 105, "pr": 0.6875, "ps": "按时学习中", "lv": 2, "done": false, "late": false}, {"n": "罗艾欣", "d": "HSSC共享实习生组", "j": "职能族", "p": "Intern 实习生", "st": "正式", "pe": null, "rd": "2026/10/19", "dr": 20, "dp": null, "pr": 0.20833, "ps": "按时学习中", "lv": 0, "done": false, "late": false}, {"n": "苏丹丹", "d": "报账组", "j": "职能族", "p": "Junior Expense Support Specialist 初级报账支持专员", "st": "正式", "pe": "2026/08/06", "rd": "2026/08/05", "dr": -55, "dp": -54, "pr": 0.275, "ps": "延期学习中", "lv": 3, "done": false, "late": false}, {"n": "韩聪", "d": "终端运营组", "j": "职能族", "p": "Senior Terminal Specialist高级终端专员", "st": "正式", "pe": "2026/06/17", "rd": "2026/06/16", "dr": -105, "dp": -104, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "张淙", "d": "GEU", "j": "职能族", "p": "Assistant to the President总裁助理", "st": "正式", "pe": "2026/08/23", "rd": "2026/06/09", "dr": -112, "dp": -37, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}, {"n": "焦江丰", "d": "质量管理部", "j": "职能族", "p": "QM Specialist质量专员", "st": "正式", "pe": "2026/06/16", "rd": "2026/06/15", "dr": -106, "dp": -105, "pr": 1.0, "ps": "按时完成", "lv": 0, "done": true, "late": false}];
-const TODAY = "2026/09/29";
+const DATA = [{"n": "马培培", "d": "西班牙客户服务组", "p": "CS Supervisor 客服主管", "st": "试用", "ddl": "2027/01/26", "ddt": "转正", "dd": 119, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "罗艳", "d": "管培生项目组", "p": "Management Trainee 管培生", "st": "试用", "ddl": "2026/12/31", "ddt": "转正", "dd": 93, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "刘强强", "d": "设备运营组", "p": "Senior SP Supervisor高级场地规划主管", "st": "试用", "ddl": "2026/12/21", "ddt": "转正", "dd": 83, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "张俊杰", "d": "商务开发组", "p": "BD Supervisor 商务开发主管", "st": "试用", "ddl": "2026/11/12", "ddt": "转正", "dd": 44, "pr": 1.0, "ps": "延期完成", "done": true, "late": true}, {"n": "陈思颖", "d": "HRBP支持组", "p": "Junior HRBP Specialist 初级HRBP专员", "st": "试用", "ddl": "2026/12/24", "ddt": "转正", "dd": 86, "pr": 0.0, "ps": "未开始", "done": false, "late": false}, {"n": "胡颖韬", "d": "支持组", "p": "Employee Support Specialist 员工支持专员", "st": "试用", "ddl": "2027/01/27", "ddt": "转正", "dd": 120, "pr": 0.6875, "ps": "按时学习中", "done": false, "late": false}, {"n": "潘云涛", "d": "产品质量组", "p": "QM Surpervisor 质量主管", "st": "试用", "ddl": "2027/01/05", "ddt": "转正", "dd": 98, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "田沛艳", "d": "支持组", "p": "Employee Support Specialist 员工支持专员", "st": "正式", "ddl": "2026/06/09", "ddt": "要求完成", "dd": -112, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "黄连珠", "d": "数据分析组", "p": "Data Analysis Engineer数据分析师", "st": "试用", "ddl": "2027/02/02", "ddt": "转正", "dd": 126, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "钟育文", "d": "库内操作研发组", "p": "Java Engineer Java工程师", "st": "试用", "ddl": "2026/09/30", "ddt": "转正", "dd": 1, "pr": 1.0, "ps": "延期完成", "done": true, "late": true}, {"n": "余峰杰", "d": "报账组", "p": "Expense Support Specialist 报账支持专员", "st": "试用", "ddl": "2026/12/31", "ddt": "转正", "dd": 93, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "徐大卫", "d": "管培生项目组", "p": "Management Trainee 管培生", "st": "试用", "ddl": "2026/12/31", "ddt": "转正", "dd": 93, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "姚欢", "d": "运输管理组", "p": "Transportation Manager运输管理经理", "st": "试用", "ddl": "2027/03/13", "ddt": "转正", "dd": 165, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "叶琳", "d": "管培生项目组", "p": "Management Trainee 管培生", "st": "试用", "ddl": "2026/12/31", "ddt": "转正", "dd": 93, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "尹辉辉", "d": "派送作业研发组", "p": "Mobile Engineer 移动端工程师", "st": "试用", "ddl": "2026/11/24", "ddt": "转正", "dd": 56, "pr": 1.0, "ps": "延期完成", "done": true, "late": true}, {"n": "余莉媛", "d": "大客户组", "p": "Senior KA Specialist 高级大客户专员", "st": "试用", "ddl": "2027/01/06", "ddt": "转正", "dd": 99, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "易淑仲", "d": "业务流程管理组", "p": "Process Management Manager 流程管理经理", "st": "试用", "ddl": "2027/02/02", "ddt": "转正", "dd": 126, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "代旭", "d": "报账组", "p": "Expense Support Specialist 报账支持专员", "st": "试用", "ddl": "2027/01/02", "ddt": "转正", "dd": 95, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "谭佩伟", "d": "HRBP支持组", "p": "HRBP Supervisor HRBP主管", "st": "正式", "ddl": "2026/07/30", "ddt": "要求完成", "dd": -61, "pr": 0.475, "ps": "延期学习中", "done": false, "late": false}, {"n": "邓会敏", "d": "业务解决方案组", "p": "Solution Architect 解决方案架构师", "st": "试用", "ddl": "2026/11/30", "ddt": "转正", "dd": 62, "pr": 0.75, "ps": "延期学习中", "done": false, "late": false}, {"n": "黄良丽", "d": "大客户组", "p": "Senior KA Specialist 高级大客户专员", "st": "正式", "ddl": "2026/07/12", "ddt": "要求完成", "dd": -79, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "严雯瑾", "d": "HSSC共享实习生组", "p": "Intern 实习生", "st": "正式", "ddl": "2026/10/28", "ddt": "要求完成", "dd": 29, "pr": 0.6875, "ps": "按时学习中", "done": false, "late": false}, {"n": "李雅琪", "d": "管培生项目组", "p": "Management Trainee 管培生", "st": "试用", "ddl": "2026/12/31", "ddt": "转正", "dd": 93, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "范美丹", "d": "应付及结算管理组", "p": "财务BP主管", "st": "正式", "ddl": "2026/09/14", "ddt": "要求完成", "dd": -15, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "林红", "d": "质量管理部", "p": "QM Specialist质量专员", "st": "试用", "ddl": "2026/12/31", "ddt": "转正", "dd": 93, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "覃梦仙", "d": "大客户组", "p": "Senior KA Specialist 高级大客户专员", "st": "试用", "ddl": "2027/02/02", "ddt": "转正", "dd": 126, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "肖风兰", "d": "商务开发组", "p": "BD Specialist 商务开发专员", "st": "正式", "ddl": "2026/06/09", "ddt": "要求完成", "dd": -112, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "郭芷晴", "d": "支持组", "p": "Employee Support Specialist 员工支持专员", "st": "正式", "ddl": "2026/08/04", "ddt": "要求完成", "dd": -56, "pr": 1.0, "ps": "延期完成", "done": true, "late": true}, {"n": "林展名", "d": "产品质量组", "p": "Management Trainee 管培生", "st": "试用", "ddl": "2026/09/29", "ddt": "转正", "dd": 0, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "许天钰", "d": "GUS核算组", "p": "高级财务主管", "st": "正式", "ddl": "2026/09/14", "ddt": "要求完成", "dd": -15, "pr": 0.125, "ps": "延期学习中", "done": false, "late": false}, {"n": "蒙虹球", "d": "操作支持组", "p": "Data Analyst Specialist数据分析专员", "st": "正式", "ddl": "2026/06/14", "ddt": "要求完成", "dd": -107, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "何怡静", "d": "管培生项目组", "p": "Management Trainee 管培生", "st": "试用", "ddl": "2026/12/31", "ddt": "转正", "dd": 93, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "曾灵毅", "d": "终端质量组", "p": "Senior Terminal Supervisor高级终端主管", "st": "试用", "ddl": "2027/03/14", "ddt": "转正", "dd": 166, "pr": 0.275, "ps": "按时学习中", "done": false, "late": false}, {"n": "李荣杰", "d": "操作管理组", "p": "LP Specialist精益生产专员", "st": "正式", "ddl": "2026/06/30", "ddt": "要求完成", "dd": -91, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "黄心仪", "d": "客户服务体验组", "p": "Junior CS Specialist 初级客服专员", "st": "正式", "ddl": "2026/07/20", "ddt": "要求完成", "dd": -71, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "付金凤", "d": "客户服务体验组", "p": "Process System Optimization Supervisor流程系统优化主管", "st": "正式", "ddl": "2026/06/23", "ddt": "要求完成", "dd": -98, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "钟国枫", "d": "质量管理部", "p": "QM Specialist质量专员", "st": "正式", "ddl": "2026/06/28", "ddt": "要求完成", "dd": -93, "pr": 1.0, "ps": "延期完成", "done": true, "late": true}, {"n": "王志崇", "d": "SD 战略运营部", "p": "Senior Business Analysis Supervisor高级经营分析主管", "st": "试用", "ddl": "2027/01/13", "ddt": "转正", "dd": 106, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "周明旭", "d": "精益改善组", "p": "LP Manager精益生产经理", "st": "试用", "ddl": "2026/10/28", "ddt": "转正", "dd": 29, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "任浩", "d": "产品质量组", "p": "QM Specialist 质量专员", "st": "正式", "ddl": "2026/06/09", "ddt": "要求完成", "dd": -112, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "余素娴", "d": "薪酬组", "p": "Compensation Supervisor 薪酬主管", "st": "正式", "ddl": "2026/06/18", "ddt": "要求完成", "dd": -103, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "张钰琳", "d": "管培生项目组", "p": "Management Trainee 管培生", "st": "试用", "ddl": "2026/12/31", "ddt": "转正", "dd": 93, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "黄忠苏", "d": "TP 中转规划部", "p": "TP Manager中转规划经理", "st": "试用", "ddl": "2027/01/19", "ddt": "转正", "dd": 112, "pr": 0.6875, "ps": "按时学习中", "done": false, "late": false}, {"n": "李琛", "d": "质量运营组", "p": "Senior QM Specialist 高级质量专员", "st": "试用", "ddl": "2027/03/22", "ddt": "转正", "dd": 174, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "卢君绮", "d": "商务支持组", "p": "Senior Business Support Specialist 高级商务支持专员", "st": "正式", "ddl": "2026/08/13", "ddt": "要求完成", "dd": -47, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "赵振", "d": "站点管理研发组", "p": "Product Manager 产品经理", "st": "正式", "ddl": "2026/06/09", "ddt": "要求完成", "dd": -112, "pr": 0.5625, "ps": "延期学习中", "done": false, "late": false}, {"n": "李壮", "d": "终端质量组", "p": "Senior Terminal Specialist高级终端专员", "st": "正式", "ddl": "2026/08/16", "ddt": "要求完成", "dd": -44, "pr": 0.75, "ps": "延期学习中", "done": false, "late": false}, {"n": "李子妍", "d": "终端运营组", "p": "Management Trainee 管培生", "st": "正式", "ddl": "2026/06/21", "ddt": "要求完成", "dd": -100, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "吴志翔", "d": "产品质量组", "p": "QM Specialist质量专员", "st": "正式", "ddl": "2026/08/16", "ddt": "要求完成", "dd": -44, "pr": 0.5625, "ps": "延期学习中", "done": false, "late": false}, {"n": "袁望旺", "d": "支持组", "p": "Employee Support Supervisor 员工支持主管", "st": "试用", "ddl": "2026/11/18", "ddt": "转正", "dd": 50, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "邓智", "d": "系统架构组", "p": "System Architect 系统架构师", "st": "正式", "ddl": "2026/06/28", "ddt": "要求完成", "dd": -93, "pr": 0.6875, "ps": "延期学习中", "done": false, "late": false}, {"n": "李雨秋", "d": "管培生项目组", "p": "Management Trainee 管培生", "st": "试用", "ddl": "2026/12/31", "ddt": "转正", "dd": 93, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "余美霖", "d": "产品部", "p": "Product Specialist 产品专员", "st": "正式", "ddl": "2026/08/17", "ddt": "要求完成", "dd": -43, "pr": 0.5625, "ps": "延期学习中", "done": false, "late": false}, {"n": "韩俊伟", "d": "精益改善组", "p": "Senior LP Specialist高级精益生产专员", "st": "试用", "ddl": "2027/03/19", "ddt": "转正", "dd": 171, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "吴昂扬", "d": "终端质量组", "p": "Management Trainee 管培生", "st": "正式", "ddl": "2026/06/16", "ddt": "要求完成", "dd": -105, "pr": 1.0, "ps": "延期完成", "done": true, "late": true}, {"n": "刘美也", "d": "操作支持组", "p": "Senior Data Analyst Specialist 高级数据分析专员", "st": "正式", "ddl": "2026/07/08", "ddt": "要求完成", "dd": -83, "pr": 0.5625, "ps": "延期学习中", "done": false, "late": false}, {"n": "胡玉霆", "d": "招聘支持组", "p": "Junior Recruitment Specialist 初级招聘专员", "st": "正式", "ddl": "2026/06/25", "ddt": "要求完成", "dd": -96, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "郑丽娜", "d": "设备运营组", "p": "SP Manager场地规划经理", "st": "试用", "ddl": "2027/01/05", "ddt": "转正", "dd": 98, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "马永梅", "d": "报账组", "p": "Expense Support Specialist 报账支持专员", "st": "试用", "ddl": "2026/12/28", "ddt": "转正", "dd": 90, "pr": 1.0, "ps": "延期完成", "done": true, "late": true}, {"n": "刘家良", "d": "质量管理部", "p": "QM Specialist质量专员", "st": "试用", "ddl": "2026/12/21", "ddt": "转正", "dd": 83, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "黎林", "d": "质量调度组", "p": "QM Specialist质量专员", "st": "试用", "ddl": "2027/02/09", "ddt": "转正", "dd": 133, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "杨家益", "d": "商务支持组", "p": "Senior Business Support Specialist 高级商务支持专员", "st": "试用", "ddl": "2027/02/16", "ddt": "转正", "dd": 140, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "刘婷", "d": "商务支持组", "p": "Senior Business Support Specialist 高级商务支持专员", "st": "正式", "ddl": "2026/06/09", "ddt": "要求完成", "dd": -112, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "韦晶", "d": "系统组", "p": "Junior System Administration Specialist 初级系统管理专员", "st": "正式", "ddl": "2026/08/18", "ddt": "要求完成", "dd": -42, "pr": 0.5625, "ps": "延期学习中", "done": false, "late": false}, {"n": "崔芳雨", "d": "管培生项目组", "p": "Management Trainee 管培生", "st": "试用", "ddl": "2026/12/31", "ddt": "转正", "dd": 93, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "田也", "d": "质量管理部", "p": "QM Specialist质量专员", "st": "试用", "ddl": "2026/12/11", "ddt": "转正", "dd": 73, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "刘名卓", "d": "数据分析组", "p": "Big Data Development Engineer大数据开发工程师", "st": "正式", "ddl": "2026/06/09", "ddt": "要求完成", "dd": -112, "pr": 1.0, "ps": "延期完成", "done": true, "late": true}, {"n": "张辉娟", "d": "HSSC支持组", "p": "Senior HSSC Supports Manager HSSC支持组高级经理", "st": "正式", "ddl": "2026/08/04", "ddt": "要求完成", "dd": -56, "pr": 0.275, "ps": "延期学习中", "done": false, "late": false}, {"n": "陈欢", "d": "客户服务体验组", "p": "Junior CS Specialist 初级客服专员", "st": "试用", "ddl": "2027/03/08", "ddt": "转正", "dd": 160, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "刘华灵", "d": "质量改善组", "p": "QM Supervisor 质量主管", "st": "正式", "ddl": "2026/06/09", "ddt": "要求完成", "dd": -112, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "江培炎", "d": "数据分析组", "p": "Big Data Development Engineer大数据开发工程师", "st": "试用", "ddl": "2026/12/16", "ddt": "转正", "dd": 78, "pr": 0.6875, "ps": "延期学习中", "done": false, "late": false}, {"n": "鲍芳君", "d": "客户服务体验组", "p": "Junior CS Specialist 初级客服专员", "st": "试用", "ddl": "2027/03/08", "ddt": "转正", "dd": 160, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "王妍玉", "d": "管培生项目组", "p": "Management Trainee 管培生", "st": "试用", "ddl": "2026/12/31", "ddt": "转正", "dd": 93, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "张群", "d": "技术支持部", "p": "IT support 技术支持工程师", "st": "正式", "ddl": "2026/08/16", "ddt": "要求完成", "dd": -44, "pr": 0.6875, "ps": "延期学习中", "done": false, "late": false}, {"n": "秦文凯", "d": "客户订单研发组", "p": "Web Engineer WEB工程师", "st": "正式", "ddl": "2026/06/22", "ddt": "要求完成", "dd": -99, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "陈若欣", "d": "终端质量组", "p": "Terminal Specialist终端专员", "st": "正式", "ddl": "2026/06/09", "ddt": "要求完成", "dd": -112, "pr": 0.6875, "ps": "延期学习中", "done": false, "late": false}, {"n": "徐筱笛", "d": "管培生项目组", "p": "Management Trainee 管培生", "st": "试用", "ddl": "2026/12/31", "ddt": "转正", "dd": 93, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "曾武", "d": "终端运营组", "p": "Terminal Manager终端经理", "st": "试用", "ddl": "2027/01/14", "ddt": "转正", "dd": 107, "pr": 0.75, "ps": "按时学习中", "done": false, "late": false}, {"n": "杨馨宇", "d": "招聘支持组", "p": "Recruitment Supervisor 招聘主管", "st": "正式", "ddl": "2026/07/30", "ddt": "要求完成", "dd": -61, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "刘宇", "d": "操作管理组", "p": "Data Analyst Specialist 数据分析专员", "st": "正式", "ddl": "2026/06/09", "ddt": "要求完成", "dd": -112, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "江莉", "d": "商务开发组", "p": "Senior BD Specialist 高级商务开发专员", "st": "试用", "ddl": "2027/01/26", "ddt": "转正", "dd": 119, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "胡晓南", "d": "产品质量组", "p": "QM Specialist质量专员", "st": "正式", "ddl": "2026/08/04", "ddt": "要求完成", "dd": -56, "pr": 1.0, "ps": "延期完成", "done": true, "late": true}, {"n": "刘学九", "d": "ES 西班牙区", "p": "ES GM 西班牙区总经理", "st": "试用", "ddl": "2027/01/14", "ddt": "转正", "dd": 107, "pr": 0.20833, "ps": "按时学习中", "done": false, "late": false}, {"n": "李清云", "d": "客户服务体验组", "p": "Senior CS Specialist 高级客服专员", "st": "正式", "ddl": "2026/06/09", "ddt": "要求完成", "dd": -112, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "文诗逸", "d": "客服工单研发组", "p": "Test Engineer 测试工程师", "st": "试用", "ddl": "2026/11/07", "ddt": "转正", "dd": 39, "pr": 1.0, "ps": "延期完成", "done": true, "late": true}, {"n": "李灿鑫", "d": "站点管理研发组", "p": "Java Engineer Java工程师", "st": "正式", "ddl": "2026/06/09", "ddt": "要求完成", "dd": -112, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "饶晨璐", "d": "运输管理组", "p": "Transportation Specialist运输管理专员", "st": "正式", "ddl": "2026/08/04", "ddt": "要求完成", "dd": -56, "pr": 1.0, "ps": "延期完成", "done": true, "late": true}, {"n": "林晓华", "d": "报账组", "p": "Junior Expense Support Specialist 初级报账支持专员", "st": "试用", "ddl": "2027/01/14", "ddt": "转正", "dd": 107, "pr": 0.275, "ps": "按时学习中", "done": false, "late": false}, {"n": "郑泽贵", "d": "大客户组", "p": "Senior KA Specialist 高级大客户专员", "st": "试用", "ddl": "2027/01/12", "ddt": "转正", "dd": 105, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "卢启航", "d": "产品质量组", "p": "Senior Product Quality Specialist高级产品质量专员", "st": "试用", "ddl": "2027/01/14", "ddt": "转正", "dd": 107, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "周伶", "d": "质量调度组", "p": "QM Specialist质量专员", "st": "试用", "ddl": "2027/02/09", "ddt": "转正", "dd": 133, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "周冰玉", "d": "数据分析组", "p": "Management Trainee 管培生", "st": "试用", "ddl": "2026/09/29", "ddt": "转正", "dd": 0, "pr": 1.0, "ps": "延期完成", "done": true, "late": true}, {"n": "黄亮", "d": "运输管理组", "p": "Senior Transportation Supervisor高级运输管理主管", "st": "正式", "ddl": "2026/08/09", "ddt": "要求完成", "dd": -51, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "何锦峰", "d": "管培生项目组", "p": "Management Trainee 管培生", "st": "试用", "ddl": "2026/12/31", "ddt": "转正", "dd": 93, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "王紫薇", "d": "支持组", "p": "Junior Data Analyst Specialist 初级数据分析专员", "st": "正式", "ddl": "2026/08/11", "ddt": "要求完成", "dd": -49, "pr": 1.0, "ps": "延期完成", "done": true, "late": true}, {"n": "高胜", "d": "揽收运输研发组", "p": "Java Engineer Java工程师", "st": "正式", "ddl": "2026/08/30", "ddt": "要求完成", "dd": -30, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "扶楚旸", "d": "数据分析组", "p": "Senior Data Analyst Engineer高级数据分析师", "st": "试用", "ddl": "2027/01/12", "ddt": "转正", "dd": 105, "pr": 0.6875, "ps": "按时学习中", "done": false, "late": false}, {"n": "罗艾欣", "d": "HSSC共享实习生组", "p": "Intern 实习生", "st": "正式", "ddl": "2026/10/19", "ddt": "要求完成", "dd": 20, "pr": 0.20833, "ps": "按时学习中", "done": false, "late": false}, {"n": "苏丹丹", "d": "报账组", "p": "Junior Expense Support Specialist 初级报账支持专员", "st": "正式", "ddl": "2026/08/05", "ddt": "要求完成", "dd": -55, "pr": 0.275, "ps": "延期学习中", "done": false, "late": false}, {"n": "韩聪", "d": "终端运营组", "p": "Senior Terminal Specialist高级终端专员", "st": "正式", "ddl": "2026/06/16", "ddt": "要求完成", "dd": -105, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "张淙", "d": "GEU", "p": "Assistant to the President总裁助理", "st": "正式", "ddl": "2026/06/09", "ddt": "要求完成", "dd": -112, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}, {"n": "焦江丰", "d": "质量管理部", "p": "QM Specialist质量专员", "st": "正式", "ddl": "2026/06/15", "ddt": "要求完成", "dd": -106, "pr": 1.0, "ps": "按时完成", "done": true, "late": false}];
 let scope = 'prob';
-let groupBy = 'dept';
 
 function pctf(p){ return (p*100).toFixed(1)+'%'; }
 function pcolor(p){ if(p>=0.999) return '#16a34a'; if(p>=0.75) return '#f59e0b'; if(p>=0.5) return '#f97316'; return '#ef4444'; }
 function rateColor(r){ return r>=100 ? '#16a34a' : (r>=50 ? '#f59e0b' : '#ef4444'); }
+function cur(){ return scope==='prob' ? DATA.filter(e=>e.st==='试用') : DATA.slice(); }
 
-function cur(){
-  return scope==='prob' ? DATA.filter(e=>e.st==='试用') : DATA.slice();
+// 倒计时档位：仅按 DDL 天数
+function tier(dd){ if(dd===null||dd===undefined) return 4; if(dd<=30) return 1; if(dd<=60) return 2; if(dd<=90) return 3; return 4; }
+function ddlText(e){
+  if(e.dd===null||e.dd===undefined) return '无DDL';
+  if(e.dd<0) return (e.ddt==='转正'?'转正日已过':'已逾期')+Math.abs(e.dd)+'天';
+  return '距'+(e.ddt==='转正'?'转正':'完成')+e.dd+'天';
 }
+function ucolor(t){ return t===1?'#ef4444':t===2?'#f97316':t===3?'#f59e0b':'#94a3b8'; }
 
 function render(){
   const list = cur();
   const done = list.filter(e=>e.done);
-  const todo = list.filter(e=>!e.done);
-  const lateN = list.filter(e=>e.late).length;
-  const lv3 = todo.filter(e=>e.lv===3).sort((a,b)=>a.dr-b.dr);
-  const lv2 = todo.filter(e=>e.lv===2).sort((a,b)=>a.dr-b.dr);
-  const lv1 = todo.filter(e=>e.lv===1).sort((a,b)=>a.dp-b.dp);
+  const todo = list.filter(e=>!e.done).sort((a,b)=>(a.dd==null?9999:a.dd)-(b.dd==null?9999:b.dd));
+  const soon = todo.filter(e=>e.dd!==null&&e.dd!==undefined&&e.dd>=0&&e.dd<=90);
 
   document.getElementById('kpis').innerHTML = `
     <div class="kpi blue"><div class="label">${scope==='prob'?'试用期学员':'全部学员'}</div>
-      <div class="num">${list.length}</div><div class="note">${scope==='prob'?'仅试用状态':'含已转正员工'}</div></div>
+      <div class="num">${list.length}</div><div class="note">按部门维度统计</div></div>
     <div class="kpi green"><div class="label">已完成 100%</div>
       <div class="num">${done.length}</div><div class="note">完成率 ${(done.length/list.length*100).toFixed(0)}%</div></div>
-    <div class="kpi amber"><div class="label">学习中未完成</div>
+    <div class="kpi amber"><div class="label">学习未完成</div>
       <div class="num">${todo.length}</div><div class="note">进度 &lt; 100%</div></div>
-    <div class="kpi red"><div class="label">已逾期未完成</div>
-      <div class="num">${lv3.length}</div><div class="note">超过要求完成时间</div></div>
-    <div class="kpi orange"><div class="label">延期完成</div>
-      <div class="num">${lateN}</div><div class="note">已完成但超时</div></div>`;
+    <div class="kpi red"><div class="label">90天内${scope==='prob'?'转正':'到期'}未完成</div>
+      <div class="num">${soon.length}</div><div class="note">最紧 ${todo.length?(todo[0].dd==null?'—':todo[0].dd+'天'):'—'}</div></div>`;
 
-  const ucard = (e,lv) => {
-    let badge='', dtxt='';
-    if(lv===3){ badge=`已逾期${Math.abs(e.dr)}天`; dtxt=`要求完成 ${e.rd||'—'}`; }
-    else if(lv===2){ badge=`剩${e.dr}天到期`; dtxt=`要求完成 ${e.rd||'—'}`; }
-    else { badge=`剩${e.dp}天转正`; dtxt=`预计转正 ${e.pe||'—'}`; }
-    return `<div class="uc lv${lv}">
-      <div>
-        <div class="un">${e.n} <span class="ub">${badge}</span></div>
-        <div class="ui">${e.d} · ${e.p}</div>
-        <div class="ud">${dtxt} · ${e.ps}</div>
-      </div>
-      <div class="ur">
-        <div class="up">${pctf(e.pr)}</div>
-        <div class="bar" style="margin-top:6px"><div class="bf" style="width:${Math.max(e.pr*100,2)}%;background:${pcolor(e.pr)}"></div></div>
+  document.getElementById('alert').innerHTML = todo.length ? `
+    <div class="ahead">按转正日倒计时的未完成学员（共 ${todo.length} 人，越靠前越紧迫）</div>
+    <div class="urg-grid">${todo.map(e=>{
+      const t=tier(e.dd);
+      return `<div class="uc t${t}">
+        <div class="un">${e.n} <span class="ub b${t}">${ddlText(e)}</span></div>
+        <div class="ui">${e.d}<br>${e.p}</div>
+        <div class="ud">${e.ddt}日 ${e.ddl||'—'}</div>
+        <div class="up" style="color:${pcolor(e.pr)}">${pctf(e.pr)}</div>
+        <div class="bar"><div class="bf" style="width:${Math.max(e.pr*100,2)}%;background:${pcolor(e.pr)}"></div></div>
         <div class="uh">还差 ${(100-e.pr*100).toFixed(1)}%</div>
-      </div></div>`;
-  };
+      </div>`;}).join('')}</div>` : `<div class="empty">当前范围内无未完成学员 🎉</div>`;
 
-  let ah='';
-  const seg = (t,c,arr,lv)=>{ if(!arr.length){ah+=`<div class="lv-title">${t} <span class="cnt">0</span></div><div class="empty">无</div>`;return;}
-    ah+=`<div class="lv-title">${t} <span class="cnt">${c}</span></div><div class="urg-grid">${arr.map(e=>ucard(e,lv)).join('')}</div>`; };
-  seg('🔴 已逾期未完成', lv3.length, lv3, 3);
-  seg('🟠 即将到期（14天内）未完成', lv2.length, lv2, 2);
-  seg('🟡 临近转正（30天内）未完成', lv1.length, lv1, 1);
-  document.getElementById('alert').innerHTML = ah;
-
-  const key = groupBy==='dept' ? 'd' : 'j';
   const g = {};
-  list.forEach(e=>{ (g[e[key]] = g[e[key]] || []).push(e); });
+  list.forEach(e=>{ (g[e.d] = g[e.d] || []).push(e); });
   const groups = Object.keys(g).map(k=>{
-    const arr=g[k], c=arr.filter(e=>e.done).length, nc=arr.filter(e=>!e.done).length;
-    const hot=arr.filter(e=>e.lv===3||e.lv===2).length;
-    return {k,arr,c,nc,rate:c/arr.length*100,hot,late:arr.filter(e=>e.late).length};
-  }).sort((a,b)=> b.nc-a.nc || b.arr.length-a.arr.length);
+    const arr=g[k], c=arr.filter(e=>e.done).length;
+    const td=arr.filter(e=>!e.done);
+    const minDd = td.length ? Math.min(...td.map(e=>e.dd==null?9999:e.dd)) : 9999;
+    return {k,arr,c,nc:td.length,rate:c/arr.length*100,minDd,late:arr.filter(e=>e.late).length};
+  }).sort((a,b)=> b.nc-a.nc || a.minDd-b.minDd);
 
-  const mrow = e => {
-    let cls='', badge='';
-    if(e.lv===3){cls='u3';badge=`<span class="badge b3">逾期${Math.abs(e.dr)}天</span>`;}
-    else if(e.lv===2){cls='u2';badge=`<span class="badge b2">剩${e.dr}天</span>`;}
-    else if(e.lv===1){cls='u1';badge=`<span class="badge b1">转正剩${e.dp}天</span>`;}
-    if(e.late && e.done) badge += `<span class="badge blate">延期完成</span>`;
-    return `<div class="mr ${cls}">
-      <div class="mt1"><span class="mn">${e.n}</span><span class="mpos">${e.p}</span><span class="mpct">${pctf(e.pr)}</span></div>
-      <div class="mt2"><span class="ms">${e.st}</span><span class="ms">要求完成 ${e.rd||'—'}</span>${badge}</div>
-      <div class="bar"><div class="bf" style="width:${Math.max(e.pr*100,2)}%;background:${pcolor(e.pr)}"></div></div>
-    </div>`;
-  };
-
-  document.getElementById('gtitle').textContent = (groupBy==='dept'?'按部门看板':'按职族看板');
   document.getElementById('depts').innerHTML = groups.map(gr=>{
     const doneArr = gr.arr.filter(e=>e.done);
-    const todoArr = gr.arr.filter(e=>!e.done).sort((a,b)=> b.lv-a.lv || a.pr-b.pr);
+    const todoArr = gr.arr.filter(e=>!e.done).sort((a,b)=>(a.dd==null?9999:a.dd)-(b.dd==null?9999:b.dd));
     const dl = doneArr.length ? `<div class="done-line">✅ 已完成 ${doneArr.length} 人：${doneArr.map(e=>e.n).join('、')}</div>` : '';
-    return `<div class="dc ${gr.hot?'hot':''}">
+    return `<div class="dc ${gr.nc?'hot':''}">
       <div class="dh"><div class="dt">${gr.k}</div>
-        <div class="dm">${gr.arr.length}人 · 完成${gr.c}/${gr.arr.length}${gr.late?` <span class="dalate">延期${gr.late}</span>`:''}${gr.hot?` <span class="dalate" style="color:#ef4444">⚠${gr.hot}</span>`:''}</div>
+        <div class="dm">${gr.arr.length}人 · 完成${gr.c}/${gr.arr.length}${gr.nc?` <span class="dalate" style="color:#ef4444">未完成${gr.nc}</span>`:''}${gr.late?` <span class="dalate">延期${gr.late}</span>`:''}</div>
         <div class="drate" style="color:${rateColor(gr.rate)}">${gr.rate.toFixed(0)}%</div></div>
       <div class="db"><div class="dbf" style="width:${gr.rate.toFixed(1)}%;background:${rateColor(gr.rate)}"></div></div>
-      ${todoArr.map(mrow).join('')}${dl}</div>`;
+      ${todoArr.map(e=>{
+        const t=tier(e.dd);
+        return `<div class="mr t${t}">
+          <div class="mt1"><span class="mn">${e.n}</span><span class="mpos">${e.p}</span><span class="mpct">${pctf(e.pr)}</span></div>
+          <div class="mt2"><span class="ms">${e.ddt}日 ${e.ddl||'—'}</span>
+            <span class="badge g${t}">${ddlText(e)}</span>${e.late?`<span class="badge blate">延期</span>`:''}</div>
+          <div class="bar"><div class="bf" style="width:${Math.max(e.pr*100,2)}%;background:${pcolor(e.pr)}"></div></div>
+        </div>`;}).join('')}${dl}</div>`;
   }).join('');
 }
 
 function setScope(s){ scope=s; document.querySelectorAll('[data-scope]').forEach(b=>b.classList.toggle('on',b.dataset.scope===s)); render(); }
-function setGroup(g){ groupBy=g; document.querySelectorAll('[data-group]').forEach(b=>b.classList.toggle('on',b.dataset.group===g)); render(); }
 render();
 </script>
 </body>
